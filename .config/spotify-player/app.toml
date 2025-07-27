@@ -1,6 +1,6 @@
 theme = "wal"
 client_id = "7659e3d0f1cf4eda8203d9a49b8bc1be"
-client_secret = "1007ee8c48c5475f98ac5294510f4ffc"
+client_secret = "wanna know my secret (˵ ¬ᴗ¬˵)"
 client_port = 8080
 login_redirect_uri = "http://127.0.0.1:8000/callback"
 playback_format = """
