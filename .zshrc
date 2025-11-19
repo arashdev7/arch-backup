@@ -6,7 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/eww/target/release:$PATH"
-
+export APT_HOME=/APT/APT_v3.0.9
+export PATH=$APT_HOME:$PATH
+# Set APT_ARCH to either MAC or LINUX or UNIX or WIN
+alias tcshAPT='env APT_HOME=$APT_HOME PATH=$PATH APT_ARCH=LINUX tcsh'
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # source /share/powerlevel10k/powerlevel10k.zsh-theme
@@ -60,3 +63,12 @@ fi
 # Add key if not already added
 ssh-add -l | grep "id_ed25519" > /dev/null || ssh-add ~/.ssh/id_ed25519 2>/dev/null
 
+function man() {
+  hour=$(date +%H)
+  min=$(date +%M)
+  if [[ $hour -eq 0 && $min -eq 30 ]]; then
+    echo "🎶 Gimme gimme gimme a man after midnight... 🎶"
+  fi
+  command man "$@"
+}
+export QT_QPA_PLATFORMTHEME=kvantum

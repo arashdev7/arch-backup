@@ -1,30 +1,25 @@
 #!/bin/bash
 
-# Get battery device (e.g., /org/freedesktop/UPower/devices/battery_BAT0)
-battery=$(upower -e | grep battery)
+# Paths to battery info
+BAT_PATH="/sys/class/power_supply/BAT1"
+AC_PATH="/sys/class/power_supply/ACAD"
 
-# Exit if no battery is found
-[ -z "$battery" ] && exit 1
+# Read battery capacity (percentage)
+capacity=$(cat "$BAT_PATH/capacity")
 
-# Get battery info
-battery_info=$(upower -i "$battery")
+# Read battery charging status (Charging, Discharging, Full, etc.)
+status=$(cat "$BAT_PATH/status")
 
-# Extract percentage
-percent=$(echo "$battery_info" | awk -F: '/percentage/ {gsub(/%/, "", $2); gsub(/^ +/, "", $2); print $2}')
+# You can also check AC adapter directly if needed:
+# ac_online=$(cat "$AC_PATH/online")  # 1 = plugged in, 0 = unplugged
 
-# Extract state (charging/discharging/fully-charged)
-state=$(echo "$battery_info" | awk -F: '/state/ {gsub(/^ +/, "", $2); print $2}')
+# Set the warning threshold
+threshold=10
 
-# Round percent to integer
-percent=${percent%.*}
-
-# Test log (optional)
-# echo "Battery: $percent%, State: $state"
-
-# Set warning threshold here (use 80 to test)
-threshold=80
-
-# Show notification only if below threshold and discharging
-if [[ "$state" == "discharging" && "$percent" -lt "$threshold" ]]; then
-    notify-send -u critical -t 10000 "⚠️ Battery Low" "Battery at ${percent}%. Plug in your charger!"
+# Check: battery is below threshold and NOT charging
+if [ "$capacity" -le "$threshold" ] && [ "$status" = "Discharging" ]; then
+    dunstify -u critical \
+             -h string:x-dunst-stack-tag:battery \
+             -h int:value:"$capacity" \
+             "⚠ Battery Low" "Charge your laptop! ($capacity%)"
 fi

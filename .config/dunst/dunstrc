@@ -350,11 +350,20 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#111111"
+    background = "#ff0000"
     foreground = "#ffffff"
-    frame_color = "#111111"
+    frame_color = "#000000"
     timeout = 0
-    override_pause_level = 40
+    font = "Sans Bold 28"
+    geometry = "800x200-0-0"
+    origin = center
+    alignment = center
+    padding = 40
+    horizontal_padding = 40
+    word_wrap = yes
+    icon_position = off
+    markup = full
+
     # Icon for notifications with critical urgency, uncomment to enable
     #default_icon = /path/to/icon
 

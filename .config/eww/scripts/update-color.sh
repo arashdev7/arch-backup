@@ -33,7 +33,7 @@ sleep 1
 
 
 #relauch spotify_player
-/home/Deboo/.local/bin/spotify_udao_bc_waal.sh  || echo "Warning: spotify_udao_bc_waal.sh failed" 
+# /home/Deboo/.local/bin/spotify_udao_bc_waal.sh  || echo "Warning: spotify_udao_bc_waal.sh failed" 
 
 # firefox 
 pywalfox update

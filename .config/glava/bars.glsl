@@ -1,8 +1,8 @@
 // WAL-COLORS-START
-uniform vec3 accent_1 = vec3(0.647, 0.203, 0.207);
-uniform vec3 accent_2 = vec3(0.698, 0.603, 0.462);
-uniform vec3 bg_color  = vec3(0.003, 0.003, 0.007);
-uniform vec3 fg_color  = vec3(0.698, 0.733, 0.721);
+uniform vec3 accent_1 = vec3(0.788, 0.196, 0.019);
+uniform vec3 accent_2 = vec3(0.784, 0.450, 0.262);
+uniform vec3 bg_color  = vec3(0.047, 0.031, 0.023);
+uniform vec3 fg_color  = vec3(0.835, 0.803, 0.776);
 // WAL-COLORS-END
 
 /* Center line thickness (pixels) */

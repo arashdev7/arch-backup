@@ -339,24 +339,256 @@ bright_white = "#bac2de"
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [[themes]]
 name = "wal"
 [themes.palette]
-background = "#010102"
-foreground = "#b2bbb8"
-black = "#010102"
-red = "#A53435"
-green = "#EB2C37"
-yellow = "#DC4147"
-blue = "#B29A76"
-magenta = "#B8A07C"
-cyan = "#EE976E"
-white = "#b2bbb8"
-bright_black = "#7c8280"
-bright_red = "#A53435"
-bright_green = "#EB2C37"
-bright_yellow = "#DC4147"
-bright_blue = "#B29A76"
-bright_magenta = "#B8A07C"
-bright_cyan = "#EE976E"
-bright_white = "#b2bbb8"
+background = "#0C0806"
+foreground = "#d5cdc6"
+black = "#0C0806"
+red = "#C93205"
+green = "#CC5219"
+yellow = "#9C5F4A"
+blue = "#C87343"
+magenta = "#AA9869"
+cyan = "#6F8181"
+white = "#d5cdc6"
+bright_black = "#958f8a"
+bright_red = "#C93205"
+bright_green = "#CC5219"
+bright_yellow = "#9C5F4A"
+bright_blue = "#C87343"
+bright_magenta = "#AA9869"
+bright_cyan = "#6F8181"
+bright_white = "#d5cdc6"

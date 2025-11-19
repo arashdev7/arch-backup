@@ -1,0 +1,27 @@
+set default-bg      "{background}"
+set default-fg      "{foreground}"
+
+set completion-bg   "{color0}"
+set completion-fg   "{color7}"
+set completion-highlight-bg "{color4}"
+set completion-highlight-fg "{foreground}"
+
+set inputbar-bg     "{background}"
+set inputbar-fg     "{foreground}"
+
+set statusbar-bg    "{background}"
+set statusbar-fg    "{foreground}"
+
+set notification-bg "{background}"
+set notification-fg "{foreground}"
+set notification-error-bg "{color1}"
+set notification-error-fg "{foreground}"
+set notification-warning-bg "{color3}"
+set notification-warning-fg "{foreground}"
+
+set recolor-lightcolor "{background}"
+set recolor-darkcolor  "{foreground}"
+
+set highlight-color "{color2}"
+set highlight-active-color "{color4}"
+
