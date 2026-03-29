@@ -8,8 +8,10 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/eww/target/release:$PATH"
 export APT_HOME=/APT/APT_v3.0.9
 export PATH=$APT_HOME:$PATH
+export YOUTUBE_API_KEY="AIzaSyDKMy-DB26X_RQSKggn06hgoSf2IwqAG9w"
 # Set APT_ARCH to either MAC or LINUX or UNIX or WIN
 alias tcshAPT='env APT_HOME=$APT_HOME PATH=$PATH APT_ARCH=LINUX tcsh'
+export GODEBUG=netdns=go
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # source /share/powerlevel10k/powerlevel10k.zsh-theme
@@ -49,19 +51,18 @@ export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
-# Start ssh-agent if not already running
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-  eval "$(ssh-agent -s)" > ~/.ssh/agent_env
-fi
-
-# Load the SSH agent environment
+# SSH agent setup (clean & safe)
 if [ -f ~/.ssh/agent_env ]; then
   source ~/.ssh/agent_env > /dev/null
-  export SSH_AUTH_SOCK
 fi
 
-# Add key if not already added
-ssh-add -l | grep "id_ed25519" > /dev/null || ssh-add ~/.ssh/id_ed25519 2>/dev/null
+if ! ps -p "$SSH_AGENT_PID" > /dev/null 2>&1; then
+  ssh-agent > ~/.ssh/agent_env
+  source ~/.ssh/agent_env > /dev/null
+fi
+
+# Add default key if needed
+ssh-add -l >/dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519 2>/dev/null
 
 function man() {
   hour=$(date +%H)
@@ -72,3 +73,12 @@ function man() {
   command man "$@"
 }
 export QT_QPA_PLATFORMTHEME=kvantum
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/Deboo/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<
