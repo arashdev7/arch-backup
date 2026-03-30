@@ -1,25 +1,41 @@
 #!/bin/bash
 
-# Paths to battery info
-BAT_PATH="/sys/class/power_supply/BAT1"
-AC_PATH="/sys/class/power_supply/ACAD"
+export WAYLAND_DISPLAY=wayland-1
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
-# Read battery capacity (percentage)
-capacity=$(cat "$BAT_PATH/capacity")
+while true; do
+    BAT=$(find /sys/class/power_supply -maxdepth 1 -name 'BAT*' | head -n 1 | xargs basename)
+    STATUS=$(cat /sys/class/power_supply/$BAT/status)
+    CAPACITY=$(cat /sys/class/power_supply/$BAT/capacity)
 
-# Read battery charging status (Charging, Discharging, Full, etc.)
-status=$(cat "$BAT_PATH/status")
+    if [ "$STATUS" = "Discharging" ] && [ "$CAPACITY" -le 10 ]; then
 
-# You can also check AC adapter directly if needed:
-# ac_online=$(cat "$AC_PATH/online")  # 1 = plugged in, 0 = unplugged
+        source "$HOME/.cache/wal/colors.sh"
+        export BORDER="$color2"
+        export FG="$color1"
+        export CAPACITY
 
-# Set the warning threshold
-threshold=10
+        FONT=$(fc-match monospace --format='%{family}' 2>/dev/null | cut -d, -f1)
 
-# Check: battery is below threshold and NOT charging
-if [ "$capacity" -le "$threshold" ] && [ "$status" = "Discharging" ]; then
-    dunstify -u critical \
-             -h string:x-dunst-stack-tag:battery \
-             -h int:value:"$capacity" \
-             "⚠ Battery Low" "Charge your laptop! ($capacity%)"
-fi
+        pw-play "$HOME/.local/bin/st_gate.mp3" 2>/dev/null || \
+        paplay  "$HOME/.local/bin/st_gate.mp3" 2>/dev/null &
+
+        foot --title="battery_warn" -o "font=${FONT}:size=16" -- bash -c "
+            export TERM=xterm-256color
+             printf '\n\n\n'
+            /usr/bin/gum style \
+                --border double \
+                --border-foreground \"\$BORDER\" \
+                --foreground \"\$FG\" \
+                --padding '0 0' \
+                --bold \
+                '  🗲 BATTERY CRITICAL' \
+                \"  \$CAPACITY% remaining — plug in now.\"
+            sleep 60
+        "
+
+        sleep 10
+    else
+        sleep 60
+    fi
+done

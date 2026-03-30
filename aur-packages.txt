@@ -15,6 +15,7 @@ arianna
 ark
 artikulate
 aspell
+asusctl
 audex
 audiocd-kio
 audiotube
@@ -57,6 +58,7 @@ elisa
 enca
 espeak-ng
 evince
+evtest
 eww
 eza
 falkon
@@ -319,6 +321,7 @@ re2
 reflector
 rocs
 rofi
+rog-control-center
 rsync
 rtw88-dkms-git
 rustup
