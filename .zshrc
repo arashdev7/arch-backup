@@ -8,7 +8,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/eww/target/release:$PATH"
 export APT_HOME=/APT/APT_v3.0.9
 export PATH=$APT_HOME:$PATH
-export YOUTUBE_API_KEY="hahakeygoesbrrrr"
+export YOUTUBE_API_KEY="AIzaSyDKMy-DB26X_RQSKggn06hgoSf2IwqAG9w"
 # Set APT_ARCH to either MAC or LINUX or UNIX or WIN
 alias tcshAPT='env APT_HOME=$APT_HOME PATH=$PATH APT_ARCH=LINUX tcsh'
 export GODEBUG=netdns=go
